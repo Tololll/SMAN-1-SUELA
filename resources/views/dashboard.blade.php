@@ -484,6 +484,10 @@
                             <input type="tel" name="phone" class="input-field" placeholder=" " value="{{ old('phone') }}">
                             <label class="input-label">Nomor Telepon</label>
                         </div>
+                        <div class="input-group">
+                            <textarea name="address" class="input-field" placeholder=" " rows="3" style="resize: vertical;">{{ old('address') }}</textarea>
+                            <label class="input-label">Alamat</label>
+                        </div>
                     </div>
 
                     {{-- Step 3: Status & Aktivitas --}}

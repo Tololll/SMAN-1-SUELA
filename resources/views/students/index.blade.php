@@ -302,7 +302,7 @@
                 <div class="card student-card p-2 fade-in" 
                      data-name="{{ strtolower($student->name) }}" 
                      data-nisn="{{ $student->nisn }}" 
-                     data-status="{{ strtolower($student->latest_record->type ?? '') }}"
+                     data-status="{{ strtolower($student->latestRecord->type ?? '') }}"
                      style="animation-delay: {{ $loop->index * 0.02 }}s">
                     
                     {{-- Header --}}
@@ -321,32 +321,32 @@
                     </div>
 
                     {{-- Content --}}
-                    @if($student->latest_record)
+                    @if($student->latestRecord)
                         <div class="mb-2" style="min-height: 60px;">
                             @php
                                 $badgeClass = 'badge-kuliah';
                                 $icon = '🎓';
-                                if($student->latest_record->type == 'kerja') {
+                                if($student->latestRecord->type == 'kerja') {
                                     $badgeClass = 'badge-kerja';
                                     $icon = '💼';
-                                } elseif($student->latest_record->type == 'keduanya') {
+                                } elseif($student->latestRecord->type == 'keduanya') {
                                     $badgeClass = 'badge-keduanya';
                                     $icon = '🎓💼';
                                 }
                             @endphp
                             <span class="badge {{ $badgeClass }} mb-2" style="display: inline-flex;">
-                                {{ $icon }} {{ ucfirst($student->latest_record->type) }}
+                                {{ $icon }} {{ ucfirst($student->latestRecord->type) }}
                             </span>
 
-                            @if($student->latest_record->institution_name)
+                            @if($student->latestRecord->institution_name)
                             <p class="text-xs font-semibold line-clamp-1 mb-1" style="color: var(--text-primary);">
-                                {{ $student->latest_record->institution_name }}
+                                {{ $student->latestRecord->institution_name }}
                             </p>
                             @endif
 
-                            @if($student->latest_record->major_or_position)
+                            @if($student->latestRecord->major_or_position)
                             <p class="text-xs line-clamp-1" style="color: var(--text-secondary);">
-                                {{ $student->latest_record->major_or_position }}
+                                {{ $student->latestRecord->major_or_position }}
                             </p>
                             @endif
                         </div>

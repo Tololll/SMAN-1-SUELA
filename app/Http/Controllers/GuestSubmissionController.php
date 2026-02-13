@@ -16,6 +16,7 @@ class GuestSubmissionController extends Controller
             'graduation_year' => 'nullable|digits:4|integer',
             'email' => 'nullable|email|max:255',
             'phone' => 'nullable|string|max:25',
+            'address' => 'nullable|string',
             'type' => 'required|in:kuliah,kerja,keduanya',
             'institution_name' => 'nullable|string|max:255',
             'major_or_position' => 'nullable|string|max:255',
@@ -39,6 +40,7 @@ class GuestSubmissionController extends Controller
                 'graduation_year' => $data['graduation_year'] ?? $student->graduation_year,
                 'email' => $data['email'] ?? $student->email,
                 'phone' => $data['phone'] ?? $student->phone,
+                'address' => $data['address'] ?? $student->address,
             ]);
         } else {
             $student = Student::create([
@@ -47,6 +49,7 @@ class GuestSubmissionController extends Controller
                 'graduation_year' => $data['graduation_year'] ?? null,
                 'email' => $data['email'] ?? null,
                 'phone' => $data['phone'] ?? null,
+                'address' => $data['address'] ?? null,
             ]);
         }
 

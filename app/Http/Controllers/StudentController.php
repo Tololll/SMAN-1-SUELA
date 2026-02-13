@@ -84,7 +84,14 @@ class StudentController extends Controller
             'status' => 'nullable|string|in:kuliah,kerja,keduanya',
         ]);
 
+        $status = $validated['status'] ?? null;
+        unset($validated['status']);
+
         $student->update($validated);
+
+        if ($status && $student->latestRecord) {
+            $student->latestRecord->update(['type' => $status]);
+        }
 
         return redirect()
             ->route('admin.students.show', $student)
